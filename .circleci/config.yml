@@ -9,16 +9,17 @@ jobs:
     steps:
       - run: echo "hello-world" > ~/output.txt
       - persist_to_workspace:
-            root: .
+            root: .circleci
+
             paths:
-                - .
+                - .circleci
   print_output_file:
     docker:
       - image: circleci/node:13.8.0   
     steps:
       - attach_workspace:
           at: ~/
-      - run: cat ~/.
+      - run: cat ~/.circleci
 # Invoke jobs via workflows£
 # See: https://circleci.com/docs/2.0/configuration-reference/#workflows
 workflows:
